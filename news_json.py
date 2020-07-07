@@ -39,10 +39,12 @@ def sort_top(word_value):
 
 
 def main(name):
-    'главная функция: запрашивает имя файла, запускает другие функции'
     top_10 = sort_top(count_word(read_files(name)))
+    print('Топ 10 самых часто встречаюшихся слов длиннее 6 символов: ')
+    n = 1
     for i in top_10.values():
-        print(i[1], ': ', i[0])
+        print('{} место. Слово "{}". Количество повторов - {}'.format(n, i[0], i[1]))
+        n += 1
 
 
 main("newsafr.json")
