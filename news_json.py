@@ -1,7 +1,7 @@
+import json
+
 def read_files(name):
     'Читаем файл'
-    import json
-
     with open(name, encoding='utf-8') as f:
         json_data = json.load(f)
         news_list = ''
@@ -28,7 +28,7 @@ def sort_top(word_value):
     'Сортируем и выводим ТОП10'
     l = lambda word_value: word_value[1]
     sort_list = sorted(word_value.items(), key=l, reverse=True)
-    count = 1
+    count = 0
     top_10 = {}
     for word in sort_list:
         top_10[count] = word
@@ -46,5 +46,5 @@ def main(name):
         print('{} место. Слово "{}". Количество повторов - {}'.format(n, i[0], i[1]))
         n += 1
 
-
 main("newsafr.json")
+
