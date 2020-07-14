@@ -23,28 +23,19 @@ def count_word(news_list):
     return word_value
 
 
-
 def sort_top(word_value):
     'Сортируем и выводим ТОП10'
+    print('Топ 10 самых часто встречаюшихся слов длиннее 6 символов: ')
     l = lambda word_value: word_value[1]
     sort_list = sorted(word_value.items(), key=l, reverse=True)
-    count = 0
-    top_10 = {}
-    for word in sort_list:
-        top_10[count] = word
-        count += 1
-        if count == 10:
-            break
-    return top_10
+    for i, value in enumerate(sort_list[:10], start=1):
+        print(f"{i} место. Слово {value} повторов.")
 
 
 def main(name):
     top_10 = sort_top(count_word(read_files(name)))
-    print('Топ 10 самых часто встречаюшихся слов длиннее 6 символов: ')
-    n = 1
-    for i in top_10.values():
-        print('{} место. Слово "{}". Количество повторов - {}'.format(n, i[0], i[1]))
-        n += 1
+    return top_10
+
 
 main("newsafr.json")
 
